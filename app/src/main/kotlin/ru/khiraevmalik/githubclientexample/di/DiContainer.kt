@@ -1,10 +1,10 @@
-package ru.khiraevmalik.githubclientexample.presentation.di
+package ru.khiraevmalik.githubclientexample.di
 
 import ru.khiraevmalik.githubclientexample.di_container.DiDomainContainer
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi.LoadPublicReposMiddleware
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi.PublicReposListReducer
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi.PublicReposListStore
-import ru.khiraevmalik.githubclientexample.presentation.routing.Navigator
+import ru.khiraevmalik.githubclientexample.routing.Navigator
 
 object DiContainer {
 

@@ -1,6 +1,6 @@
 package ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi
 
-import ru.khiraevmalik.githubclientexample.presentation.base.PagingStatus
+import ru.khiraevmalik.githubclientexample.base.PagingStatus
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListItem
 
 sealed class State {

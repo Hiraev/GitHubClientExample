@@ -1,4 +1,4 @@
-package ru.khiraevmalik.githubclientexample.presentation.routing
+package ru.khiraevmalik.githubclientexample.routing
 
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.PublicReposListFragment
 

@@ -1,4 +1,4 @@
-package ru.khiraevmalik.githubclientexample.presentation.base
+package ru.khiraevmalik.githubclientexample.base
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

@@ -4,8 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import ru.khiraevmalik.githubclientexample.R
-import ru.khiraevmalik.githubclientexample.presentation.base.ViewModelFactory
-import ru.khiraevmalik.githubclientexample.presentation.routing.ContainerHolder
+import ru.khiraevmalik.githubclientexample.base.ViewModelFactory
+import ru.khiraevmalik.githubclientexample.routing.ContainerHolder
 
 class RootActivity : AppCompatActivity() {
 

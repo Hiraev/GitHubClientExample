@@ -1,4 +1,4 @@
-package ru.khiraevmalik.githubclientexample.presentation.base
+package ru.khiraevmalik.githubclientexample.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

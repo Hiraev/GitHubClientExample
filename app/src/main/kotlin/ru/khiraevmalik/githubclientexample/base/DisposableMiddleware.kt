@@ -1,4 +1,4 @@
-package ru.khiraevmalik.githubclientexample.presentation.base
+package ru.khiraevmalik.githubclientexample.base
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope

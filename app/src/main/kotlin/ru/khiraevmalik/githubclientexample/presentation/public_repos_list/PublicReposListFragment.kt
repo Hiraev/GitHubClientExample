@@ -12,17 +12,17 @@ import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public
 import kotlinx.android.synthetic.main.include_error_loading_repos_stub.include_error_with_retry_stub_button
 import kotlinx.android.synthetic.main.include_no_data_with_retry_stub.include_no_data_with_retry_stub_button
 import ru.khiraevmalik.githubclientexample.R
-import ru.khiraevmalik.githubclientexample.presentation.base.BaseFragment
-import ru.khiraevmalik.githubclientexample.presentation.base.LinearLayoutManagerRecyclerViewOnScrollListener
-import ru.khiraevmalik.githubclientexample.presentation.base.PagingStatus
-import ru.khiraevmalik.githubclientexample.presentation.base.ViewModelFactory
+import ru.khiraevmalik.githubclientexample.base.BaseFragment
+import ru.khiraevmalik.githubclientexample.base.LinearLayoutManagerRecyclerViewOnScrollListener
+import ru.khiraevmalik.githubclientexample.base.PagingStatus
+import ru.khiraevmalik.githubclientexample.base.ViewModelFactory
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListAdapter
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListItem
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi.Action
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi.State
-import ru.khiraevmalik.githubclientexample.presentation.utils.addSystemTopPadding
-import ru.khiraevmalik.githubclientexample.presentation.utils.rippleClick
-import ru.khiraevmalik.githubclientexample.presentation.utils.visibleWithCheck
+import ru.khiraevmalik.githubclientexample.utils.addSystemTopPadding
+import ru.khiraevmalik.githubclientexample.utils.rippleClick
+import ru.khiraevmalik.githubclientexample.utils.visibleWithCheck
 
 class PublicReposListFragment : BaseFragment(R.layout.fragment_public_repos_list) {
 

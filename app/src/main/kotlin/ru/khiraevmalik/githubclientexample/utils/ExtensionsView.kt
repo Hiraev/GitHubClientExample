@@ -1,4 +1,4 @@
-package ru.khiraevmalik.githubclientexample.presentation.utils
+package ru.khiraevmalik.githubclientexample.utils
 
 import android.graphics.Rect
 import android.view.View

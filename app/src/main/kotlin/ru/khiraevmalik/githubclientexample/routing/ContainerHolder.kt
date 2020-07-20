@@ -1,4 +1,4 @@
-package ru.khiraevmalik.githubclientexample.presentation.routing
+package ru.khiraevmalik.githubclientexample.routing
 
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager

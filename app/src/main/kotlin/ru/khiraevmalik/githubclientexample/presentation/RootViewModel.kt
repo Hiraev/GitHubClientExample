@@ -1,8 +1,8 @@
 package ru.khiraevmalik.githubclientexample.presentation
 
 import androidx.lifecycle.ViewModel
-import ru.khiraevmalik.githubclientexample.presentation.routing.ContainerHolder
-import ru.khiraevmalik.githubclientexample.presentation.routing.Navigator
+import ru.khiraevmalik.githubclientexample.routing.ContainerHolder
+import ru.khiraevmalik.githubclientexample.routing.Navigator
 
 class RootViewModel(
         private val navigator: Navigator

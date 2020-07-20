@@ -9,7 +9,7 @@ import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapte
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.view_holders.ReposLoadingErrorViewHolder
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.view_holders.ReposLoadingViewHolder
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.view_holders.ReposViewHolder
-import ru.khiraevmalik.githubclientexample.presentation.utils.rippleClick
+import ru.khiraevmalik.githubclientexample.utils.rippleClick
 
 class ReposListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

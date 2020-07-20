@@ -1,10 +1,10 @@
 package ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi
 
 import kotlinx.coroutines.Job
+import ru.khiraevmalik.githubclientexample.base.DisposableMiddleware
+import ru.khiraevmalik.githubclientexample.base.PagingStatus
 import ru.khiraevmalik.githubclientexample.domain_model.ContentResult
 import ru.khiraevmalik.githubclientexample.interactors.GitHubReposInteractor
-import ru.khiraevmalik.githubclientexample.presentation.base.DisposableMiddleware
-import ru.khiraevmalik.githubclientexample.presentation.base.PagingStatus
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListItem
 import java.util.concurrent.atomic.AtomicBoolean
 

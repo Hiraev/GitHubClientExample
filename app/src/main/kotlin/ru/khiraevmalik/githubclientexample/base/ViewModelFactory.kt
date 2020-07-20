@@ -1,9 +1,9 @@
-package ru.khiraevmalik.githubclientexample.presentation.base
+package ru.khiraevmalik.githubclientexample.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import ru.khiraevmalik.githubclientexample.di.DiContainer
 import ru.khiraevmalik.githubclientexample.presentation.RootViewModel
-import ru.khiraevmalik.githubclientexample.presentation.di.DiContainer
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.PublicReposListViewModel
 
 object ViewModelFactory : ViewModelProvider.Factory {
