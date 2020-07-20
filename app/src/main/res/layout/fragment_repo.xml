@@ -83,7 +83,7 @@
             android:id="@+id/fragment_repo_last_commit_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Последний коммит"
+            android:text="@string/last_commit_title"
             android:textAppearance="@style/TextAppearance15R"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
