@@ -60,6 +60,11 @@ class PublicReposListFragment : BaseFragment(R.layout.fragment_public_repos_list
         adapter.setOnRetryMoreClickListener {
             vm.proceed(Action.User.LoadMore)
         }
+        adapter.setItemClickListener { item ->
+            (item as? ReposListItem.Repo)?.let {
+                vm.openRepo(it.info)
+            }
+        }
     }
 
     private fun observeState() {

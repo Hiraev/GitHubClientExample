@@ -37,4 +37,10 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="TextAppearance20M">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
 </resources>

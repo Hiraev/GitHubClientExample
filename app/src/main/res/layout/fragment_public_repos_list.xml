@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         app:title="Список"
+        app:titleTextAppearance="@style/TextAppearance20M"
         app:titleTextColor="@android:color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
