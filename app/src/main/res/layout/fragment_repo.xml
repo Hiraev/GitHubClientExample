@@ -23,173 +23,187 @@
         app:titleTextColor="@android:color/white"
         tools:title="Title" />
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/global_medium_margin"
-        android:background="@drawable/bg_white_round_corners_4dp"
-        android:orientation="horizontal"
-        android:padding="@dimen/global_small_margin">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/fragment_repo_author_logo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/bg_color_accent_circle_50dp"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/fragment_repo_author_name"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="@dimen/global_medium_margin"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:textAppearance="@style/TextAppearance15M"
-            tools:text="Author long namenjn nksdn nndks nkn nsknfnskn fkn njsn fnskn k" />
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/global_big_margin">
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/global_medium_margin"
+                android:background="@drawable/bg_white_round_corners_4dp"
+                android:orientation="horizontal"
+                android:padding="@dimen/global_small_margin">
 
-    <include
-        android:id="@+id/fragment_repo_error_loading_stub"
-        layout="@layout/include_error_loading_commits_with_retry_stub"
-        android:layout_width="240dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/global_big_margin"
-        android:visibility="gone" />
+                <ImageView
+                    android:id="@+id/fragment_repo_author_logo"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/bg_color_accent_circle_50dp"
+                    tools:ignore="ContentDescription" />
 
-    <ProgressBar
-        android:id="@+id/fragment_repo_progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        tools:visibility="gone" />
+                <TextView
+                    android:id="@+id/fragment_repo_author_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/global_medium_margin"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:textAppearance="@style/TextAppearance15M"
+                    tools:text="Author long namenjn nksdn nndks nkn nsknfnskn fkn njsn fnskn k" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/fragment_repo_last_commit_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/global_medium_margin"
-        android:layout_marginTop="@dimen/global_medium_margin"
-        android:layout_marginEnd="@dimen/global_medium_margin"
-        android:background="@drawable/bg_white_round_corners_4dp"
-        android:padding="@dimen/global_medium_margin"
-        android:visibility="gone"
-        tools:visibility="visible">
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/fragment_repo_last_commit_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/last_commit_title"
-            android:textAppearance="@style/TextAppearance15R"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <include
+                android:id="@+id/fragment_repo_error_loading_stub"
+                layout="@layout/include_error_loading_commits_with_retry_stub"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/global_big_margin"
+                android:visibility="gone" />
 
-        <View
-            android:id="@+id/fragment_repo_last_commit_title_divider"
-            style="@style/GrayThinDivider"
-            android:layout_width="0dp"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="@dimen/global_small_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_title" />
+            <ProgressBar
+                android:id="@+id/fragment_repo_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                tools:visibility="gone" />
 
-        <TextView
-            android:id="@+id/fragment_repo_last_commit_sha"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/global_small_margin"
-            android:textAppearance="@style/TextAppearance14M"
-            android:textColor="@color/text_color_gray_light"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_title_divider"
-            tools:text="effc7a8" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fragment_repo_last_commit_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/global_medium_margin"
+                android:layout_marginTop="@dimen/global_medium_margin"
+                android:layout_marginEnd="@dimen/global_medium_margin"
+                android:background="@drawable/bg_white_round_corners_4dp"
+                android:padding="@dimen/global_medium_margin"
+                android:visibility="gone"
+                tools:visibility="visible">
 
-        <TextView
-            android:id="@+id/fragment_repo_last_commit_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/global_big_margin"
-            android:layout_marginTop="@dimen/global_small_margin"
-            android:textAppearance="@style/TextAppearance14M"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_title_divider"
-            tools:text="10.04.2020" />
+                <TextView
+                    android:id="@+id/fragment_repo_last_commit_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/last_commit_title"
+                    android:textAppearance="@style/TextAppearance15R"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/fragment_repo_commit_message"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/global_small_margin"
-            android:textAppearance="@style/TextAppearance14R"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_sha"
-            tools:text="Long commit message lmk hn nk f jndkfk m jndk mldn jkndk mfdj kndfk mfk jn kdfu nn" />
+                <View
+                    android:id="@+id/fragment_repo_last_commit_title_divider"
+                    style="@style/GrayThinDivider"
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/global_small_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_title" />
 
-        <TextView
-            android:id="@+id/fragment_repo_commit_author_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/global_small_margin"
-            android:textAppearance="@style/TextAppearance15M"
-            android:textColor="@color/colorPrimary"
-            app:layout_constraintEnd_toStartOf="@id/fragment_repo_commit_author_email"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_repo_commit_message"
-            tools:text="Hiraev" />
+                <TextView
+                    android:id="@+id/fragment_repo_last_commit_sha"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/global_small_margin"
+                    android:textAppearance="@style/TextAppearance14M"
+                    android:textColor="@color/text_color_gray_light"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_title_divider"
+                    tools:text="effc7a8" />
 
-        <TextView
-            android:id="@+id/fragment_repo_commit_author_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/global_small_margin"
-            android:gravity="end"
-            android:textAppearance="@style/TextAppearance14M"
-            android:textColor="@color/text_color_gray_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/fragment_repo_commit_author_login"
-            app:layout_constraintTop_toBottomOf="@id/fragment_repo_commit_message"
-            tools:text="email@gmail.com" />
+                <TextView
+                    android:id="@+id/fragment_repo_last_commit_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/global_big_margin"
+                    android:layout_marginTop="@dimen/global_small_margin"
+                    android:textAppearance="@style/TextAppearance14M"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_title_divider"
+                    tools:text="10.04.2020" />
 
-        <View
-            android:id="@+id/fragment_repo_last_parents_title_divider"
-            style="@style/GrayThinDivider"
-            android:layout_width="0dp"
-            android:layout_height="0.5dp"
-            android:layout_marginTop="@dimen/global_small_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_repo_commit_author_email" />
+                <TextView
+                    android:id="@+id/fragment_repo_commit_message"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/global_small_margin"
+                    android:textAppearance="@style/TextAppearance14R"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_sha"
+                    tools:text="Long commit message lmk hn nk f jndkfk m jndk mldn jkndk mfdj kndfk mfk jn kdfu nn" />
 
-        <TextView
-            android:id="@+id/fragment_repo_commit_parents_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/global_small_margin"
-            android:text="@string/commit_parents_title"
-            android:textAppearance="@style/TextAppearance14M"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_parents_title_divider" />
+                <TextView
+                    android:id="@+id/fragment_repo_commit_author_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/global_medium_margin"
+                    android:textAppearance="@style/TextAppearance15M"
+                    android:textColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toStartOf="@id/fragment_repo_commit_author_email"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_repo_commit_message"
+                    tools:text="Hiraev" />
 
-        <TextView
-            android:id="@+id/fragment_repo_commit_parents"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/global_medium_margin"
-            android:layout_marginTop="@dimen/global_small_margin"
-            android:textAppearance="@style/TextAppearance14R"
-            android:textColor="@color/text_color_gray_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/fragment_repo_commit_parents_title"
-            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_parents_title_divider"
-            tools:text="effc7a8, effc7a8, effc7a8, effc7a8, effc7a8, effc7a8, effc7a8, effc7a8" />
+                <TextView
+                    android:id="@+id/fragment_repo_commit_author_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/global_medium_margin"
+                    android:gravity="end"
+                    android:textAppearance="@style/TextAppearance14M"
+                    android:textColor="@color/text_color_gray_light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/fragment_repo_commit_author_login"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_repo_commit_message"
+                    tools:text="email@gmail.com" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <View
+                    android:id="@+id/fragment_repo_last_parents_title_divider"
+                    style="@style/GrayThinDivider"
+                    android:layout_width="0dp"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="@dimen/global_medium_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_repo_commit_author_email" />
+
+                <TextView
+                    android:id="@+id/fragment_repo_commit_parents_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/global_small_margin"
+                    android:text="@string/commit_parents_title"
+                    android:textAppearance="@style/TextAppearance14M"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_parents_title_divider" />
+
+                <TextView
+                    android:id="@+id/fragment_repo_commit_parents"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/global_medium_margin"
+                    android:layout_marginTop="@dimen/global_small_margin"
+                    android:textAppearance="@style/TextAppearance14R"
+                    android:textColor="@color/text_color_gray_light"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/fragment_repo_commit_parents_title"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_parents_title_divider"
+                    tools:text="effc7a8, effc7a8, effc7a8, effc7a8, effc7a8, effc7a8, effc7a8, effc7a8" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
