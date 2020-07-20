@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">GitHubClientExample</string>
+    <string name="all_repos_loaded">Все репозитории загруже</string>
+    <string name="retry">Повторить</string>
+    <string name="load_more_repos_error">Ошибка при подгрузке репозиториев</string>
 </resources>

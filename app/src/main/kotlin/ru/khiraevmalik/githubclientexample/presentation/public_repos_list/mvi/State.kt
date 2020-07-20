@@ -5,8 +5,6 @@ import ru.khiraevmalik.githubclientexample.presentation.base.PagingStatus
 
 sealed class State {
 
-    object Idle : State()
-
     object Loading : State()
 
     object EmptyData : State()

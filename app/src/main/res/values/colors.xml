@@ -3,4 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="gray_light">#AFAFAF</color>
+
+    <color name="text_color_gray_light">@color/gray_light</color>
+    <color name="ripple_gray">#E1E1E1</color>
 </resources>
