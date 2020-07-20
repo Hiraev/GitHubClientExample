@@ -5,6 +5,6 @@ import ru.khiraevmalik.githubclientexample.domain_model.GitHubRepository
 
 interface GitHubPublicReposRepository {
 
-    suspend fun fetchPublicRepositoriesSince(since: Int? = null): ContentResult<List<GitHubRepository>>
+    suspend fun fetchPublicRepositories(since: Int? = null): ContentResult<List<GitHubRepository>>
 
 }

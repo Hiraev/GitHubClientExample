@@ -10,7 +10,7 @@ class GitHubPublicReposRepositoryImpl(
         private val gitHubApi: GitHubApi
 ) : BaseRepository(), GitHubPublicReposRepository {
 
-    override suspend fun fetchPublicRepositoriesSince(since: Int?): ContentResult<List<GitHubRepository>> = try {
+    override suspend fun fetchPublicRepositories(since: Int?): ContentResult<List<GitHubRepository>> = try {
         val converted = withIO {
             gitHubApi.fetchPublicRepositories(since)
         }.map(GitHubRepositoryConverter::convert)
