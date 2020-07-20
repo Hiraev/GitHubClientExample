@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public
 import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public_repos_list_no_data_with_retry_stub
 import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public_repos_list_progress_bar
 import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public_repos_list_recycler_view
+import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public_repos_list_status_bar
 import ru.khiraevmalik.githubclientexample.R
 import ru.khiraevmalik.githubclientexample.presentation.base.BaseFragment
 import ru.khiraevmalik.githubclientexample.presentation.base.PagingStatus
@@ -15,6 +16,7 @@ import ru.khiraevmalik.githubclientexample.presentation.base.ViewModelFactory
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListAdapter
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListItem
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi.State
+import ru.khiraevmalik.githubclientexample.presentation.utils.addSystemTopPadding
 import ru.khiraevmalik.githubclientexample.presentation.utils.visibleWithCheck
 
 class PublicReposListFragment : BaseFragment(R.layout.fragment_public_repos_list) {
@@ -37,6 +39,7 @@ class PublicReposListFragment : BaseFragment(R.layout.fragment_public_repos_list
     private fun initViews() {
         fragment_public_repos_list_recycler_view.adapter = adapter
         fragment_public_repos_list_recycler_view.setHasFixedSize(true)
+        fragment_public_repos_list_status_bar.addSystemTopPadding()
     }
 
     private fun observeState() {
