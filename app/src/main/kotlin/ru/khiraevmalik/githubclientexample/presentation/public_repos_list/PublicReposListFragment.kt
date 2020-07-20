@@ -9,14 +9,19 @@ import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public
 import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public_repos_list_progress_bar
 import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public_repos_list_recycler_view
 import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public_repos_list_status_bar
+import kotlinx.android.synthetic.main.include_error_loading_repos_stub.include_error_with_retry_stub_button
+import kotlinx.android.synthetic.main.include_no_data_with_retry_stub.include_no_data_with_retry_stub_button
 import ru.khiraevmalik.githubclientexample.R
 import ru.khiraevmalik.githubclientexample.presentation.base.BaseFragment
+import ru.khiraevmalik.githubclientexample.presentation.base.LinearLayoutManagerRecyclerViewOnScrollListener
 import ru.khiraevmalik.githubclientexample.presentation.base.PagingStatus
 import ru.khiraevmalik.githubclientexample.presentation.base.ViewModelFactory
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListAdapter
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListItem
+import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi.Action
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi.State
 import ru.khiraevmalik.githubclientexample.presentation.utils.addSystemTopPadding
+import ru.khiraevmalik.githubclientexample.presentation.utils.rippleClick
 import ru.khiraevmalik.githubclientexample.presentation.utils.visibleWithCheck
 
 class PublicReposListFragment : BaseFragment(R.layout.fragment_public_repos_list) {
@@ -27,7 +32,12 @@ class PublicReposListFragment : BaseFragment(R.layout.fragment_public_repos_list
 
     private val adapter = ReposListAdapter()
 
+    private val scrollListener = LinearLayoutManagerRecyclerViewOnScrollListener(PREFETCH_DISTANCE) {
+        vm.proceed(Action.User.LoadMore)
+    }
+
     companion object {
+        const val PREFETCH_DISTANCE = 10
         fun newInstance() = PublicReposListFragment()
     }
 
@@ -39,7 +49,17 @@ class PublicReposListFragment : BaseFragment(R.layout.fragment_public_repos_list
     private fun initViews() {
         fragment_public_repos_list_recycler_view.adapter = adapter
         fragment_public_repos_list_recycler_view.setHasFixedSize(true)
+        fragment_public_repos_list_recycler_view.addOnScrollListener(scrollListener)
         fragment_public_repos_list_status_bar.addSystemTopPadding()
+        include_no_data_with_retry_stub_button.rippleClick {
+            vm.proceed(Action.User.Retry)
+        }
+        include_error_with_retry_stub_button.rippleClick {
+            vm.proceed(Action.User.Retry)
+        }
+        adapter.setOnRetryMoreClickListener {
+            vm.proceed(Action.User.LoadMore)
+        }
     }
 
     private fun observeState() {
@@ -52,18 +72,9 @@ class PublicReposListFragment : BaseFragment(R.layout.fragment_public_repos_list
                         PagingStatus.FULL -> listOf(ReposListItem.FullRepos)
                         else -> emptyList()
                     }
+                    if (state.pagingStatus == PagingStatus.HAS_MORE) scrollListener.enable() else scrollListener.disable()
                     adapter.submitList(state.repos + tail)
                 }
-                is State.Loading -> {
-                    // TODO
-                }
-                is State.EmptyData -> {
-                    // TODO
-                }
-                is State.Error -> {
-                    // TODO
-                }
-
             }
             fragment_public_repos_list_recycler_view.visibleWithCheck(state is State.Success)
             fragment_public_repos_list_error_loading_repos_stub.visibleWithCheck(state is State.Error)

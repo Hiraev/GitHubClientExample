@@ -9,6 +9,7 @@ import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapte
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.view_holders.ReposLoadingErrorViewHolder
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.view_holders.ReposLoadingViewHolder
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.view_holders.ReposViewHolder
+import ru.khiraevmalik.githubclientexample.presentation.utils.rippleClick
 
 class ReposListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -18,6 +19,7 @@ class ReposListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val differ = AsyncListDiffer(this, ReposListCallback)
     private var itemClickListener: (ReposListItem) -> Unit = { _ -> }
+    private var onRetryLoadMoreClickListener: () -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder = when (viewType) {
         ReposItemViewType.DATA.ordinal -> inflateReposItem(parent)
@@ -39,7 +41,12 @@ class ReposListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is ReposViewHolder -> holder.bind((differ.currentList[position] as ReposListItem.Repo).info)
+            is ReposViewHolder -> {
+                holder.bind((differ.currentList[position] as ReposListItem.Repo).info)
+                holder.itemView.rippleClick {
+                    itemClickListener.invoke(differ.currentList[position])
+                }
+            }
         }
     }
 
@@ -47,11 +54,22 @@ class ReposListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         differ.submitList(items)
     }
 
+    fun setItemClickListener(listener: (ReposListItem) -> Unit) {
+        this.itemClickListener = listener
+    }
+
+    fun setOnRetryMoreClickListener(listener: () -> Unit) {
+        this.onRetryLoadMoreClickListener = listener
+    }
+
     private fun inflateReposItem(parent: ViewGroup) =
             ReposViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_github_repo, parent, false))
 
     private fun inflateReposLoadingError(parent: ViewGroup) =
-            ReposLoadingErrorViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_github_repos_error_loading_more, parent, false))
+            ReposLoadingErrorViewHolder(
+                    LayoutInflater.from(parent.context).inflate(R.layout.item_github_repos_error_loading_more, parent, false),
+                    onRetryLoadMoreClickListener
+            )
 
     private fun inflateLoadingMoreItem(parent: ViewGroup) =
             ReposLoadingViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_github_repo_loading, parent, false))

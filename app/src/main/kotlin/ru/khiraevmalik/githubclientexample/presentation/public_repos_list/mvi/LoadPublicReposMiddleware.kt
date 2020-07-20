@@ -50,7 +50,7 @@ class LoadPublicReposMiddleware(
     }
 
     private fun loadMore(old: List<ReposListItem.Repo>) {
-        if (hasMoreRepositories.get() || loadingMoreJob?.isActive == true) return
+        if (!hasMoreRepositories.get() || loadingMoreJob?.isActive == true) return
         loadingMoreJob = launch {
             effectOnMain(Action.Effect.Success(old, PagingStatus.LOADING))
             when (val res = gitHubReposInteractor.fetchPublicRepos(lastId)) {

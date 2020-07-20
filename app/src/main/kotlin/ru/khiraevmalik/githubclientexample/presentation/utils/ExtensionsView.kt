@@ -5,6 +5,10 @@ import android.view.View
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
+fun View.rippleClick(delay: Long = RippleActionInvoker.DEFAULT_RIPPLE_DELAY, action: () -> Unit) {
+    setOnClickListener { RippleActionInvoker.rippleAction(delay, action) }
+}
+
 fun View.visible(visible: Boolean) {
     this.visibility = if (visible) View.VISIBLE else View.GONE
 }
