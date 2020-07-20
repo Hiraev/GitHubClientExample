@@ -3,6 +3,7 @@ package ru.khiraevmalik.githubclientexample.data
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Test
+import ru.khiraevmalik.githubclientexample.data.converters.GitHubCommitsConverter
 
 class GitHubApiTest {
 
@@ -25,8 +26,10 @@ class GitHubApiTest {
     @Test
     fun fetchCommit() {
         runBlocking {
-            val res = gitHubApi.fetchPublicRepositories().last()
-            gitHubApi.fetchCommits(res.full_name)
+            val res = gitHubApi.fetchPublicRepositories().first()
+            val commits = gitHubApi.fetchCommits(res.full_name)
+            val date = commits.map(GitHubCommitsConverter::convert).last().date
+            println(date)
         }
     }
 
