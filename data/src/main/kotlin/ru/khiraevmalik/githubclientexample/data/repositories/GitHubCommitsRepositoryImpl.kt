@@ -8,10 +8,12 @@ import ru.khiraevmalik.githubclientexample.repositories_api.GitHubCommitsReposit
 
 class GitHubCommitsRepositoryImpl(
         private val gitHubApi: GitHubApi
-) : GitHubCommitsRepository {
+) : BaseRepository(), GitHubCommitsRepository {
 
     override suspend fun fetchCommitsForRepo(repoFullName: String): ContentResult<List<GitHubCommitInfo>> = try {
-        val commits = gitHubApi.fetchCommits(repoFullName).map(GitHubCommitsConverter::convert)
+        val commits = withIO {
+            gitHubApi.fetchCommits(repoFullName)
+        }.map(GitHubCommitsConverter::convert)
         ContentResult.Success(commits)
     } catch (t: Throwable) {
         ContentResult.Error(t)
