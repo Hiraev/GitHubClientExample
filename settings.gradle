@@ -1,0 +1,9 @@
+include ':app'
+include ':domain-model'
+include ':domain'
+include ':interactors-api'
+include ':repositories-api'
+include ':data'
+include ':di-container'
+include ':mvi-no-reactive'
+rootProject.name = "GitHubClientExample"
