@@ -30,6 +30,7 @@ import ru.khiraevmalik.githubclientexample.utils.RippleActionInvoker
 import ru.khiraevmalik.githubclientexample.utils.addSystemTopPadding
 import ru.khiraevmalik.githubclientexample.utils.args
 import ru.khiraevmalik.githubclientexample.utils.rippleClick
+import ru.khiraevmalik.githubclientexample.utils.shortSha
 import ru.khiraevmalik.githubclientexample.utils.visibleWithCheck
 import ru.khiraevmalik.githubclientexample.utils.withParcelable
 
@@ -65,12 +66,12 @@ class RepoFragment : BaseFragment(R.layout.fragment_repo) {
         vm.commit.observe(this, Observer { contentResult ->
             when (contentResult) {
                 is ContentResult.Success -> {
-                    fragment_repo_last_commit_sha.text = contentResult.data.sha.substring(0, 7)
+                    fragment_repo_last_commit_sha.text = contentResult.data.sha.shortSha()
                     fragment_repo_last_commit_date.text = contentResult.data.date
                     fragment_repo_commit_message.text = contentResult.data.message
                     fragment_repo_commit_author_login.text = contentResult.data.authorName
                     fragment_repo_commit_author_email.text = contentResult.data.authorEmail
-                    fragment_repo_commit_parents.text = contentResult.data.parents.map { it.substring(0, 7) }.joinToString()
+                    fragment_repo_commit_parents.text = contentResult.data.parents.joinToString { it.shortSha() }
                 }
             }
             fragment_repo_progress_bar.visibleWithCheck(false)
