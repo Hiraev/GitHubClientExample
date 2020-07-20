@@ -10,7 +10,7 @@ import ru.khiraevmalik.githubclientexample.domain.interactors.GitHubReposInterac
 import ru.khiraevmalik.githubclientexample.interactors.GitHubCommitsInteractor
 import ru.khiraevmalik.githubclientexample.interactors.GitHubReposInteractor
 
-object DiContainer {
+object DiDomainContainer {
 
     private val moshi by lazy {
         MoshiFactory.createMoshiForGitHubApi()
