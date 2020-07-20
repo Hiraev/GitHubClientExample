@@ -2,10 +2,10 @@ package ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi
 
 import kotlinx.coroutines.Job
 import ru.khiraevmalik.githubclientexample.domain_model.ContentResult
-import ru.khiraevmalik.githubclientexample.domain_model.GitHubRepository
 import ru.khiraevmalik.githubclientexample.interactors.GitHubReposInteractor
 import ru.khiraevmalik.githubclientexample.presentation.base.DisposableMiddleware
 import ru.khiraevmalik.githubclientexample.presentation.base.PagingStatus
+import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListItem
 import java.util.concurrent.atomic.AtomicBoolean
 
 class LoadPublicReposMiddleware(
@@ -38,7 +38,7 @@ class LoadPublicReposMiddleware(
                     if (result.data.isEmpty()) {
                         effectOnMain(Action.Effect.Empty)
                     } else {
-                        effectOnMain(Action.Effect.Success(result.data, PagingStatus.HAS_MORE))
+                        effectOnMain(Action.Effect.Success(result.data.map(ReposListItem::Repo), PagingStatus.HAS_MORE))
                         lastId = result.data.last().id
                     }
                 }
@@ -49,7 +49,7 @@ class LoadPublicReposMiddleware(
         }
     }
 
-    private fun loadMore(old: List<GitHubRepository>) {
+    private fun loadMore(old: List<ReposListItem.Repo>) {
         if (hasMoreRepositories.get() || loadingMoreJob?.isActive == true) return
         loadingMoreJob = launch {
             effectOnMain(Action.Effect.Success(old, PagingStatus.LOADING))
@@ -62,7 +62,7 @@ class LoadPublicReposMiddleware(
                         effectOnMain(Action.Effect.Success(old, PagingStatus.FULL))
                         hasMoreRepositories.set(false)
                     } else {
-                        effectOnMain(Action.Effect.Success(old + res.data, PagingStatus.HAS_MORE))
+                        effectOnMain(Action.Effect.Success(old + res.data.map(ReposListItem::Repo), PagingStatus.HAS_MORE))
                     }
                 }
             }

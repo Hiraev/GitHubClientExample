@@ -1,7 +1,7 @@
 package ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi
 
-import ru.khiraevmalik.githubclientexample.domain_model.GitHubRepository
 import ru.khiraevmalik.githubclientexample.presentation.base.PagingStatus
+import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListItem
 
 sealed class State {
 
@@ -9,7 +9,7 @@ sealed class State {
 
     object EmptyData : State()
 
-    class Success(val repos: List<GitHubRepository>, val pagingStatus: PagingStatus) : State()
+    class Success(val repos: List<ReposListItem.Repo>, val pagingStatus: PagingStatus) : State()
 
     class Error(val throwable: Throwable?) : State()
 

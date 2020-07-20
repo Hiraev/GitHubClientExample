@@ -8,4 +8,5 @@
 
     <color name="text_color_gray_light">@color/gray_light</color>
     <color name="ripple_gray">#E1E1E1</color>
+    <color name="text_color_black">@android:color/black</color>
 </resources>

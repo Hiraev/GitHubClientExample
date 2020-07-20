@@ -3,4 +3,8 @@
     <string name="all_repos_loaded">Все репозитории загруже</string>
     <string name="retry">Повторить</string>
     <string name="load_more_repos_error">Ошибка при подгрузке репозиториев</string>
+    <string name="empty_repos_subtitle">Не найдено никаких репозиториев</string>
+    <string name="empty_repos_title">Пустой список</string>
+    <string name="cannot_load_repos">Не удалось загрузить репозитории</string>
+    <string name="check_internet_connection">Проверьте подключение к сети Интернет</string>
 </resources>

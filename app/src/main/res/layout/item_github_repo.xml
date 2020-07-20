@@ -8,7 +8,10 @@
     android:layout_marginStart="@dimen/global_medium_margin"
     android:layout_marginTop="@dimen/global_medium_margin"
     android:layout_marginEnd="@dimen/global_medium_margin"
-    android:background="@drawable/bg_ripple_gray_round_corners_4dp">
+    android:background="@drawable/bg_ripple_gray_round_corners_4dp"
+    android:clickable="true"
+    android:elevation="@dimen/global_small_elevation"
+    android:focusable="true">
 
     <ImageView
         android:id="@+id/item_github_repo_logo"

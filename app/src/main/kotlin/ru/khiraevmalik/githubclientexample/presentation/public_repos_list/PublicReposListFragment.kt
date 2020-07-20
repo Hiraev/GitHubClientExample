@@ -4,12 +4,18 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public_repos_list_error_loading_repos_stub
+import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public_repos_list_no_data_with_retry_stub
+import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public_repos_list_progress_bar
 import kotlinx.android.synthetic.main.fragment_public_repos_list.fragment_public_repos_list_recycler_view
 import ru.khiraevmalik.githubclientexample.R
 import ru.khiraevmalik.githubclientexample.presentation.base.BaseFragment
+import ru.khiraevmalik.githubclientexample.presentation.base.PagingStatus
 import ru.khiraevmalik.githubclientexample.presentation.base.ViewModelFactory
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListAdapter
+import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListItem
 import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi.State
+import ru.khiraevmalik.githubclientexample.presentation.utils.visibleWithCheck
 
 class PublicReposListFragment : BaseFragment(R.layout.fragment_public_repos_list) {
 
@@ -37,7 +43,13 @@ class PublicReposListFragment : BaseFragment(R.layout.fragment_public_repos_list
         vm.state.observe(this, Observer { state ->
             when (state) {
                 is State.Success -> {
-                    // TODO
+                    val tail: List<ReposListItem> = when (state.pagingStatus) {
+                        PagingStatus.LOADING -> listOf(ReposListItem.LoadingMore)
+                        PagingStatus.ERROR -> listOf(ReposListItem.LoadingMoreError)
+                        PagingStatus.FULL -> listOf(ReposListItem.FullRepos)
+                        else -> emptyList()
+                    }
+                    adapter.submitList(state.repos + tail)
                 }
                 is State.Loading -> {
                     // TODO
@@ -48,7 +60,12 @@ class PublicReposListFragment : BaseFragment(R.layout.fragment_public_repos_list
                 is State.Error -> {
                     // TODO
                 }
+
             }
+            fragment_public_repos_list_recycler_view.visibleWithCheck(state is State.Success)
+            fragment_public_repos_list_error_loading_repos_stub.visibleWithCheck(state is State.Error)
+            fragment_public_repos_list_no_data_with_retry_stub.visibleWithCheck(state is State.EmptyData)
+            fragment_public_repos_list_progress_bar.visibleWithCheck(state is State.Loading)
         })
     }
 

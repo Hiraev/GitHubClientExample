@@ -1,7 +1,7 @@
 package ru.khiraevmalik.githubclientexample.presentation.public_repos_list.mvi
 
-import ru.khiraevmalik.githubclientexample.domain_model.GitHubRepository
 import ru.khiraevmalik.githubclientexample.presentation.base.PagingStatus
+import ru.khiraevmalik.githubclientexample.presentation.public_repos_list.adapter.ReposListItem
 
 sealed class Action {
 
@@ -15,7 +15,7 @@ sealed class Action {
         object Loading : Effect()
         object Empty : Effect()
         class Error(val throwable: Throwable?) : Effect()
-        class Success(val news: List<GitHubRepository>, val pagingStatus: PagingStatus) : Effect()
+        class Success(val news: List<ReposListItem.Repo>, val pagingStatus: PagingStatus) : Effect()
     }
 
 }
