@@ -5,5 +5,6 @@ data class GitHubCommitInfo(
         val date: String,
         val message: String,
         val authorName: String,
-        val authorEmail: String
+        val authorEmail: String,
+        val parents: List<String>
 )

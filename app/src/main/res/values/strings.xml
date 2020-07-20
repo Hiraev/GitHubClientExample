@@ -9,4 +9,5 @@
     <string name="check_internet_connection">Проверьте подключение к сети Интернет</string>
     <string name="cannot_load_commits">Не удалось загрузить историю коммитов</string>
     <string name="last_commit_title">Последний коммит</string>
+    <string name="commit_parents_title">parents:</string>
 </resources>

@@ -5,5 +5,6 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class NWGitHubCommit(
         val sha: String,
-        val commit: NWGitHubCommitInfo
+        val commit: NWGitHubCommitInfo,
+        val parents: List<NWGitHubCommitParent>
 )

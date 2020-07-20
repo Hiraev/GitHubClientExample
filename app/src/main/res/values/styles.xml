@@ -9,4 +9,10 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
+    <style name="GrayThinDivider">
+        <item name="android:layout_height">0.5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@color/gray_light_light</item>
+    </style>
+
 </resources>

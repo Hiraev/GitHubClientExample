@@ -88,6 +88,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <View
+            android:id="@+id/fragment_repo_last_commit_title_divider"
+            style="@style/GrayThinDivider"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/global_small_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_title" />
+
         <TextView
             android:id="@+id/fragment_repo_last_commit_sha"
             android:layout_width="wrap_content"
@@ -96,7 +106,7 @@
             android:textAppearance="@style/TextAppearance14M"
             android:textColor="@color/text_color_gray_light"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_title"
+            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_title_divider"
             tools:text="effc7a8" />
 
         <TextView
@@ -107,7 +117,7 @@
             android:layout_marginTop="@dimen/global_small_margin"
             android:textAppearance="@style/TextAppearance14M"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_title"
+            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_commit_title_divider"
             tools:text="10.04.2020" />
 
         <TextView
@@ -146,6 +156,39 @@
             app:layout_constraintStart_toEndOf="@id/fragment_repo_commit_author_login"
             app:layout_constraintTop_toBottomOf="@id/fragment_repo_commit_message"
             tools:text="email@gmail.com" />
+
+        <View
+            android:id="@+id/fragment_repo_last_parents_title_divider"
+            style="@style/GrayThinDivider"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="@dimen/global_small_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_repo_commit_author_email" />
+
+        <TextView
+            android:id="@+id/fragment_repo_commit_parents_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/global_small_margin"
+            android:text="@string/commit_parents_title"
+            android:textAppearance="@style/TextAppearance14M"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_parents_title_divider" />
+
+        <TextView
+            android:id="@+id/fragment_repo_commit_parents"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/global_medium_margin"
+            android:layout_marginTop="@dimen/global_small_margin"
+            android:textAppearance="@style/TextAppearance14R"
+            android:textColor="@color/text_color_gray_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/fragment_repo_commit_parents_title"
+            app:layout_constraintTop_toBottomOf="@id/fragment_repo_last_parents_title_divider"
+            tools:text="effc7a8, effc7a8, effc7a8, effc7a8, effc7a8, effc7a8, effc7a8, effc7a8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
