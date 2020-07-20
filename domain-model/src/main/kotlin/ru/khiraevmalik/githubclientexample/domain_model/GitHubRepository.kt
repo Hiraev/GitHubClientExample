@@ -2,5 +2,6 @@ package ru.khiraevmalik.githubclientexample.domain_model
 
 data class GitHubRepository(
         val fullName: String,
-        val owner: GitHubOwner
+        val owner: GitHubOwner,
+        val id: Int
 )

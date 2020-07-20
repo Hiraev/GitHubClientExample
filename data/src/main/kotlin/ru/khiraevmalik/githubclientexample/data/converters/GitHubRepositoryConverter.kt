@@ -8,7 +8,8 @@ object GitHubRepositoryConverter {
     fun convert(gitHubRepository: NWGitHubRepositoryInfo) =
             GitHubRepository(
                     fullName = gitHubRepository.full_name,
-                    owner = GitHubOwnerConverter.convert(gitHubRepository.owner)
+                    owner = GitHubOwnerConverter.convert(gitHubRepository.owner),
+                    id = gitHubRepository.id
             )
 
 }
