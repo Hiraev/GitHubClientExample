@@ -9,7 +9,13 @@ import com.bumptech.glide.Glide
 import kotlinx.android.parcel.Parcelize
 import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_author_logo
 import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_author_name
+import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_commit_author_email
+import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_commit_author_login
+import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_commit_message
 import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_error_loading_stub
+import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_last_commit_date
+import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_last_commit_info
+import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_last_commit_sha
 import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_progress_bar
 import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_status_bar
 import kotlinx.android.synthetic.main.fragment_repo.fragment_repo_toolbar
@@ -56,15 +62,18 @@ class RepoFragment : BaseFragment(R.layout.fragment_repo) {
 
     private fun initObservers() {
         vm.commit.observe(this, Observer { contentResult ->
-            fragment_repo_progress_bar.visibleWithCheck(false)
             when (contentResult) {
                 is ContentResult.Success -> {
-
-                }
-                is ContentResult.Error -> {
-                    fragment_repo_error_loading_stub.visibleWithCheck(true)
+                    fragment_repo_last_commit_sha.text = contentResult.data.sha.substring(0, 7)
+                    fragment_repo_last_commit_date.text = contentResult.data.date
+                    fragment_repo_commit_message.text = contentResult.data.message
+                    fragment_repo_commit_author_login.text = contentResult.data.authorName
+                    fragment_repo_commit_author_email.text = contentResult.data.authorEmail
                 }
             }
+            fragment_repo_progress_bar.visibleWithCheck(false)
+            fragment_repo_last_commit_info.visibleWithCheck(contentResult is ContentResult.Success)
+            fragment_repo_error_loading_stub.visibleWithCheck(contentResult is ContentResult.Error)
         })
     }
 
