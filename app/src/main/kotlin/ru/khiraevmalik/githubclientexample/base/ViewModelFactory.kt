@@ -14,7 +14,7 @@ object ViewModelFactory : ViewModelProvider.Factory {
             when (modelClass) {
                 RootViewModel::class.java -> RootViewModel(DiContainer.provideNavigator())
                 PublicReposListViewModel::class.java -> PublicReposListViewModel(DiContainer.provideNavigator(), DiContainer.providePublicReposListStore())
-                RepoViewModel::class.java -> RepoViewModel(DiContainer.provideNavigator())
+                RepoViewModel::class.java -> RepoViewModel(DiContainer.provideNavigator(), DiContainer.provideGitHubCommitsInteractor())
 
                 else -> throw IllegalArgumentException("Can't find model")
             } as T

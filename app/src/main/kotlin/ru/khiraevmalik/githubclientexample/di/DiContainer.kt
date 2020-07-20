@@ -16,6 +16,8 @@ object DiContainer {
 
     fun provideGitHubReposInteractor() = DiDomainContainer.provideReposInteractor()
 
+    fun provideGitHubCommitsInteractor() = DiDomainContainer.provideCommitsInteractor()
+
     fun providePublicReposListStore(): PublicReposListStore = PublicReposListStore(
             reducer = providePublicReposListReducer(),
             middleware = providePublicReposListMiddleware()

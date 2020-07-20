@@ -23,4 +23,47 @@
         app:titleTextColor="@android:color/white"
         tools:title="Title" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/global_medium_margin"
+        android:background="@drawable/bg_white_round_corners_4dp"
+        android:orientation="horizontal"
+        android:padding="@dimen/global_small_margin">
+
+        <ImageView
+            android:id="@+id/fragment_repo_author_logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/bg_color_accent_circle_50dp"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/fragment_repo_author_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/global_medium_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textAppearance="@style/TextAppearance15M"
+            tools:text="Author long namenjn nksdn nndks nkn nsknfnskn fkn njsn fnskn k" />
+
+    </LinearLayout>
+
+    <include
+        android:id="@+id/fragment_repo_error_loading_stub"
+        layout="@layout/include_error_loading_commits_with_retry_stub"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/global_big_margin"
+        android:visibility="gone" />
+
+    <ProgressBar
+        android:id="@+id/fragment_repo_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
 </LinearLayout>
